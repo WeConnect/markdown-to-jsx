@@ -1,4 +1,4 @@
-import matchHtmlBlock from './matchHtmlBlock'
+import { matchHtmlBlock } from './index'
 import fs from 'fs'
 
 describe('matchHtmlBlock', () => {
