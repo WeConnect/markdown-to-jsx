@@ -1,5 +1,5 @@
 {
-  "name": "@wework/markdown-to-jsx",
+  "name": "markdown-to-jsx",
   "description": "Convert markdown to JSX with ease for React and React-like projects. Super lightweight and highly configurable. Forked from probablyup/markdown-to-jsx",
   "homepage": "https://probablyup.github.io/markdown-to-jsx",
   "license": "MIT",
