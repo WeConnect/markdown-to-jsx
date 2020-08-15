@@ -46,7 +46,10 @@ workflows:
   version: 2
   cibuild:
     jobs:
-      - tests
+      - tests:
+          filters:
+              tags:
+                only: /.*/
       - release:
           requires:
             - tests
