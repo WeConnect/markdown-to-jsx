@@ -1,0 +1,34 @@
+
+version: 2.1
+
+jobs:
+  tests:
+    docker:
+      - image: circleci/node:12.13.1
+    environment:
+      TARGET_REACT_VERSION: '16'
+    steps:
+      - checkout
+      - restore_cache:
+          key: lib-dependencies-v1-{{ checksum "yarn.lock" }}
+      - run:
+          name: Instal dependencies
+          command: |
+            yarn --frozen-lockfile
+      - save_cache:
+          paths:
+            - javascripts/node_modules
+          key: lib-dependencies-v1-{{ checksum "yarn.lock" }}
+      - run:
+          name: Run Node Tests
+          command: |
+              yarn test -- --coverage
+              yarn lint
+              yarn build
+              yarn size
+
+workflows:
+  version: 2
+  cibuild:
+    jobs:
+      - tests
