@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import unquote from 'unquote';
+import matchHtmlBlock from './matchHtmlBlock'
 
 /** TODO: Drop for React 16? */
 const ATTRIBUTE_TO_JSX_PROP_MAP = {
@@ -1501,7 +1502,7 @@ export function compiler(markdown, options) {
       /**
        * find the first matching end tag and process the interior
        */
-      match: anyScopeRegex(HTML_BLOCK_ELEMENT_R),
+      match: matchHtmlBlock,
       order: PARSE_PRIORITY_HIGH,
       parse(capture, parse, state) {
         const [, whitespace] = capture[3].match(HTML_LEFT_TRIM_AMOUNT_R);
