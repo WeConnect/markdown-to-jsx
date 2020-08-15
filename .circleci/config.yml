@@ -15,9 +15,6 @@ jobs:
           name: Instal dependencies
           command: |
             yarn --frozen-lockfile
-            yarn remove react react-dom
-            yarn add react@$(echo $TARGET_REACT_VERSION)
-            yarn add react-dom@$(echo $TARGET_REACT_VERSION)
       - save_cache:
           paths:
             - javascripts/node_modules
