@@ -26,7 +26,6 @@ jobs:
               yarn lint
               yarn build
               yarn size
-              codecov
 
 workflows:
   version: 2
