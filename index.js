@@ -327,8 +327,10 @@ function parseTableCells(source, parse, state) {
   const rowsText = source
     .trim()
     .split('\n');
+  const originalInline = state.inline
 
   return rowsText.map(function(rowText) {
+      state.inline = originalInline
       return parseTableRow(rowText, parse, state);
   });
 }

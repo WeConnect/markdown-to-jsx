@@ -3599,3 +3599,54 @@ it('handles a holistic example', () => {
 
   expect(root.innerHTML).toMatchSnapshot();
 });
+
+it('should allow nested content in table cells', () => {
+  render(compiler(`
+|              |                           |
+| ------------ | ------------------------- |
+| __Row 1__:   | <div><div>foo</div></div> |
+| __Row 2__:   | bar                       |
+`))
+  expect(root.innerHTML).toMatchInlineSnapshot(`
+
+<table data-reactroot>
+  <thead>
+    <tr>
+      <th>
+      </th>
+      <th>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <strong>
+          Row 1
+        </strong>
+        :
+      </td>
+      <td>
+        <div>
+          <div>
+            foo
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>
+          Row 2
+        </strong>
+        :
+      </td>
+      <td>
+        bar
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+`)
+});
