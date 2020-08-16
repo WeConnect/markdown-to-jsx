@@ -105,4 +105,10 @@ describe('matchHtmlBlock', () => {
     const capture = matchHtmlBlock(source)
     expect(capture).toBeNull()
   });
+
+  it('does not match just an open tag', () => {
+    const source = '<div>'
+    const capture = matchHtmlBlock(source)
+    expect(capture).toBeNull()
+  });
 });

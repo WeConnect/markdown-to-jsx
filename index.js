@@ -562,7 +562,7 @@ export function matchHtmlBlock(source) {
       [wholeMatch, children, isClosingTag, innerTagName, isSelfClosing] = match
       endingChildrenIndex = index + children.length
       endingIndex = index + wholeMatch.length
-      // console.log('match: ', match)
+
       if (isClosingTag === '/') {
         if (innerTagName !== stack.pop()) {
           valid = false
@@ -579,7 +579,7 @@ export function matchHtmlBlock(source) {
     }
   }
 
-  if (!valid) {
+  if (!valid || stack.length > 0) {
     return null
   }
   const endingWhitespace = source.slice(endingIndex).match(/^(\n*)/)
